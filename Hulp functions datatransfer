@@ -1,0 +1,30 @@
+import random
+import string
+
+def write_text_to_file():
+    """Writes input text to file."""
+    text = input("Enter some text: ")  # Ask for text input
+    file_name = input("Enter the file name (without extension): ")  # Ask for file name
+    file_name += ".txt"  # Add .txt extension
+
+    with open(file_name, "w") as file:
+        file.write(text)
+
+    print(f"Text has been written to {file_name}")
+
+def password_generator():
+    """Generates 50 passwords."""
+    passwords_50 = []
+    random_characters = string.ascii_letters + string.digits + string.punctuation
+    while len(passwords_50) != 50:        
+        password = ""
+        while len(password) != 32:
+            password = password + random.choice(random_characters)
+        passwords_50.append(password)
+    file_name = input("Enter the file name (without extension): ")  # Ask for file name
+    file_name += ".txt"  # Add .txt extension
+    with open(file_name, "w") as file:
+       file.write("\n".join(passwords_50))    
+    
+
+password_generator()
